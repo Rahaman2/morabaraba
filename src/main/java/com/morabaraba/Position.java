@@ -54,4 +54,18 @@ public class Position {
                 ", occupied=" + occupied +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (!(obj instanceof Position)) return false;
+        Position other = (Position) obj;
+        return this.position.equals(other.position);
+    }
+
+
+    @Override
+    public int hashCode() {
+        return position.hashCode();
+    }
 }
