@@ -29,6 +29,24 @@ public class GameBoard {
         }
     }
 
+    /**
+     * 
+     * @return A list of all positions that are not occupied
+     */
+    public List<Position> getUnoccupiedPositions() {
+        List<Position> unoccupiedPositions = new ArrayList<>();
+        
+        for (Map.Entry<Position, List<Position>> entry : adjacencyList.entrySet()) {
+            Position position = entry.getKey();
+            if (!position.isOccupied()) { 
+                unoccupiedPositions.add(position);
+            }
+        }
+        
+        return unoccupiedPositions;
+    }
+    
+
     @Override
     public String toString() {
         return "GameBoard{" +
