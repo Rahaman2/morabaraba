@@ -3,7 +3,7 @@ package com.morabaraba;
 import java.util.*;
 
 public class GameBoard {
-    private final Map<Position, List<Position>> adjacencyList; // Adjacency list for graph representation
+    private static Map<Position, List<Position>> adjacencyList; // Adjacency list for graph representation
 
     public GameBoard() {
         adjacencyList = new HashMap<>();
@@ -40,7 +40,7 @@ public class GameBoard {
        /**
      * Initializes the board by createng a graph of positions mapped to thier neighbours
      */
-    private void initializeBoard() {
+    private static void initializeBoard() {
 
 
         // Set up adjacency list
@@ -88,7 +88,7 @@ public class GameBoard {
      * @param positions
      * @return an array of positions
      */
-    private List<Position> getNeighborPositions( List<String> positions) {
+    private static List<Position> getNeighborPositions( List<String> positions) {
         List<Position> neighbours = new ArrayList<>();
         for(String pos: positions) {
             neighbours.add(new Position(pos));
