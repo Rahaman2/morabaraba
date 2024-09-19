@@ -10,14 +10,29 @@ public class GameBoard {
         initializeBoard();
     }
  
-
+    /**
+     *  Finds the neighbours of a node in the adjecency list
+     * @param position
+     * @return A list of neighbouring positions
+     */
     public List<Position> getNeighbors(Position position) {
         return adjacencyList.get(position);
     }
 
+    /**
+     * 
+     * @param position
+     * @return 
+     */
     public Position getPosition(Position position) {
         return adjacencyList.containsKey(position) ? position: null;
     }
+
+    /**
+     * Checks if a position is occupied
+     * @param position
+     * @return true if occupied and false otherwise
+     */
 
     public boolean isPositionOccupied(Position position) {
         return position != null && position.isOccupied();
@@ -62,7 +77,7 @@ public class GameBoard {
 
 
         // Set up adjacency list
-        adjacencyList.put(new Position("A1"), getNeighborPositions(Arrays.asList("A2", "D1")));
+        adjacencyList.put(new Position("A1"), getNeighborPositions(Arrays.asList("A2", "B1", "D1")));
         adjacencyList.put(new Position("A2"), getNeighborPositions(Arrays.asList("A1", "A3", "B2")));
         adjacencyList.put(new Position("A3"), getNeighborPositions(Arrays.asList("A2", "B3", "E3")));
 

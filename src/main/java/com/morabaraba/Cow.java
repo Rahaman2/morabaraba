@@ -1,12 +1,13 @@
 package com.morabaraba;
 
 public class Cow {
-    private final String owner; // Owner of the cow (player identifier)
+    private final Player owner; // Owner of the cow (player identifier)
     private Position position;   // Current position of the cow
+    private int cowTag;
 
-
-    public Cow(String owner) {
+    public Cow(Player owner, int cowTag) {
         this.owner = owner;
+        this.cowTag = cowTag;
         this.position = null; // Initially, the cow is not placed on the board
     }
 
@@ -14,7 +15,7 @@ public class Cow {
      * Gets the owner of the cow.
      * @return the owner's identifier.
      */
-    public String getOwner() {
+    public Player getOwner() {
         return owner;
     }
 
@@ -25,6 +26,7 @@ public class Cow {
     public Position getPosition() {
         return position;
     }
+
 
     /**
      * Sets the position of the cow on the board.

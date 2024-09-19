@@ -1,7 +1,9 @@
 package com.morabaraba;
 
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println(new GameBoard().getUnoccupiedPositions().size());
+        GameBoard board = new GameBoard();
+        System.out.println( board.getUnoccupiedPositions().size());
     }
 }

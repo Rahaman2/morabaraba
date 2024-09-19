@@ -9,6 +9,13 @@ public class Position {
         this.position = position;
         this.occupied = false;
     }
+    /**
+     * 
+     * @return name of the postition
+     */
+    public String getName() {
+        return position;
+    }
 
     /**
      * Checks if the position is occupied.
@@ -20,7 +27,7 @@ public class Position {
 
     /**
      * Occupies the position if it is not already occupied.
-     * @param mill The mill that is occupying this position.
+
      * @return true if the position was successfully occupied, false otherwise.
      */
     public boolean occupy() {
@@ -60,7 +67,7 @@ public class Position {
         if (this == obj) return true;
         if (!(obj instanceof Position)) return false;
         Position other = (Position) obj;
-        return this.position.equals(other.position);
+        return this.position.equals(other.position) && this.occupied == other.occupied;
     }
 
 
