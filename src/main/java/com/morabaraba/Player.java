@@ -1,5 +1,6 @@
 package com.morabaraba;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -10,26 +11,42 @@ public class Player {
     private String name;
     private HashMap<Cow, Position> cows;
     private GameBoard board; 
+    private List<Cow> placedCows;
     
-    public Player(String name, List<Cow> cows) {
+    public Player(String name, GameBoard board) {
         this.name = name;
-        this.board = new GameBoard();
+        this.board = board;
         this.cows =  initaializeCows();
+        this.placedCows = new ArrayList<>();
     }
 
+    public String getName() {
+        return name;
+    }
+    public List<Cow> getCows() {
+        return cows.keySet().stream().toList();
+    }
+
+    public List<Cow> getUnplacedCows() {
+        return cows.keySet().stream().filter( cow -> cow.getPosition() == null).toList();
+    }
 
     /**
-     * Moves a cow to a valid position
+     * Moves a cow to a valid position and marks the postion as occupied if successful
+     * This method also updates the state variable of placed cows by incrementing it
      * @param cow
      * @param position
-     * @return boolean return true if successful and false otherwise
+     * @return cow that was moved
      */
 
-    public boolean moveCow(Cow cow, Position position) {
+    public Cow moveCow(Cow cow, Position position) {
         
-        if(!cow.isPlaced()) {
-            cow.setPosition(position);
-            return true;
+        if(!cow.isPlaced()) { 
+            cow.setPosition(position); // assign a cow a position
+            placedCows.add(cow); // add cow to placed cows 
+            position.occupy(); // mark the postion as occupired
+            cows.put(cow, position); // update the cow hashmap to mark the cow as placed
+            return cow;
         } else {
 
             // if cow is placed check for neighbouring positions
@@ -39,11 +56,11 @@ public class Player {
 
             if (validNeighbours.contains(position)) {
                 cow.setPosition(position);
-                return true;
+                return cow;
             }
                                                         
         }
-        return false;
+        return cow;
     }
 
 

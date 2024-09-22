@@ -12,6 +12,23 @@ public class Cow {
     }
 
     /**
+     * sets the tag ie. number of cow
+     * @param cowTag
+     */
+    public void setCowTag(int cowTag) {
+        this.cowTag = cowTag;
+    }
+    
+    /**
+     * Returns the tag ie. number of cow
+     * @param cowTag
+     */
+    public int getCowTag() {
+        return cowTag;
+    }
+    
+
+    /**
      * Gets the owner of the cow.
      * @return the owner's identifier.
      */
@@ -34,6 +51,7 @@ public class Cow {
      */
     public void setPosition(Position position) {
         this.position = position;
+        position.occupy();
     }
 
     /**
@@ -47,7 +65,7 @@ public class Cow {
     @Override
     public String toString() {
         return "Cow{" +
-                "owner='" + owner + '\'' +
+                "owner='" + owner.getName() + '\'' +
                 ", position=" + (position != null ? position.getPosition() : "not placed") +
                 '}';
     }

@@ -3,13 +3,28 @@ package com.morabaraba;
 import java.util.*;
 
 public class GameBoard {
-    private static Map<Position, List<Position>> adjacencyList; // Adjacency list for graph representation
+    private  Map<Position, List<Position>> adjacencyList; // Adjacency list for graph representation
 
     public GameBoard() {
         adjacencyList = new HashMap<>();
         initializeBoard();
     }
+
+    /**
+     * 
+     * @return returns the board graph adjacency list
+     */
+    public  Map<Position, List<Position>> getAdjacencyList() {
+        return adjacencyList;
+    }
  
+    /**
+     * resets the properties of the adjacency list by marking a new occupied node as occupied
+     * @param adjacencyList
+     */
+    public  void setAdjacencyList(Map<Position, List<Position>> adjacencyList) {
+        this.adjacencyList = adjacencyList;
+    }
     /**
      *  Finds the neighbours of a node in the adjecency list
      * @param position
@@ -60,6 +75,11 @@ public class GameBoard {
         
         return unoccupiedPositions;
     }
+
+    // public void setUnoccupiedPositions( List<Position> positions) {
+    //     positions
+    // }
+    
     
 
     @Override
@@ -73,7 +93,7 @@ public class GameBoard {
        /**
      * Initializes the board by createng a graph of positions mapped to thier neighbours
      */
-    private static void initializeBoard() {
+    private  void initializeBoard() {
 
 
         // Set up adjacency list
