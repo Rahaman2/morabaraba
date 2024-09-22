@@ -1,6 +1,9 @@
 package com.morabaraba;
 
 import java.util.*;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class GameBoard {
     private  Map<Position, List<Position>> adjacencyList; // Adjacency list for graph representation
@@ -80,7 +83,18 @@ public class GameBoard {
     //     positions
     // }
     
-    
+    public void viewBoard() {
+        String fileName = "gameboard.txt";
+        try {
+            List<String> fileContent = Files.readAllLines(Paths.get("src", "resources", fileName));
+            
+            for (String line : fileContent) {
+                System.out.println(line);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     @Override
     public String toString() {

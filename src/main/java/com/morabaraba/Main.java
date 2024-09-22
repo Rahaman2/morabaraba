@@ -43,7 +43,8 @@ public class Main {
         // System.out.println(player1.getUnplacedCows());
         Player player2 = new Player("second",  board);
         placementPhase(player1, player2, board);
-        System.out.println( board.getAdjacencyList().values().stream().toList().get(0));
+        // System.out.println( board.getAdjacencyList().values().stream().toList().get(0));
         // System.out.println(player2.getUnplacedCows().size());
+        board.viewBoard();
     }
 }
