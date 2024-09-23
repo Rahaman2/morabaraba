@@ -36,7 +36,7 @@ class PositionTest {
 
     @Test
     void testGetNeigbours() {
-        GameBoard board = new GameBoard();
+
         List<Position> neighbours = List.of(new Position("A2"), new Position("B1"), new Position("D1"));
 
         for(int i = 0; i < neighbours.size(); i++) {

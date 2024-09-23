@@ -11,8 +11,7 @@ public class Main {
             Position p = position;
             Cow cow = player.getUnplacedCows().get(0);
 
-            // System.out.println(player.getUnplacedCows().get(0));
-            // Cow cow = new Cow(player, 0);
+            
             List<Position> pNeighbours = board.getAdjacencyList().get(p);
             Position newCowPostition = player.moveCow(cow, p).getPosition();
             Map<Position, List<Position>> updatedAdjecencyList = board.getAdjacencyList();
@@ -32,19 +31,18 @@ public class Main {
         for (int j = 12; j < 24; j++) {
             placeCow(player2, positions.get(j), board);
         }
+
+        
     }
 
-
-    
 
     public static void main(String[] args) {
         GameBoard board = new GameBoard();
         Player player1 = new Player("first",  board);
-        // System.out.println(player1.getUnplacedCows());
+        
         Player player2 = new Player("second",  board);
         placementPhase(player1, player2, board);
-        // System.out.println( board.getAdjacencyList().values().stream().toList().get(0));
-        // System.out.println(player2.getUnplacedCows().size());
+        
         board.viewBoard();
     }
 }

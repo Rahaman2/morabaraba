@@ -5,9 +5,9 @@ import java.util.List;
 
 public class Mill {
     private final List<Position> positions; 
-    private final String owner; 
+    private final Player owner; 
 
-    public Mill(String owner) {
+    public Mill(Player owner) {
         this.owner = owner;
         this.positions = new ArrayList<>(3); 
     }
@@ -38,7 +38,7 @@ public class Mill {
      * Returns the owner of the mill.
      * @return the owner's identifier.
      */
-    public String getOwner() {
+    public Player getOwner() {
         return owner;
     }
 
