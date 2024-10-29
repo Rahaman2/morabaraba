@@ -6,8 +6,9 @@ import java.nio.file.Paths;
 
 public class GameBoard {
     private  Map<Position, List<Position>> adjacencyList; // Adjacency list for graph representation
+    private boolean gameON = true;
 
-    public GameBoard() {
+    public GameBoard() {    //The game board is represented as a graph
         adjacencyList = new HashMap<>();
         initializeBoard();
     }
@@ -21,7 +22,7 @@ public class GameBoard {
     }
  
     /**
-     * resets the properties of the adjacency list by marking a new occupied node as occupied
+     * returns a new game state typically when a movve is made
      * @param adjacencyList
      */
     public  void setAdjacencyList(Map<Position, List<Position>> adjacencyList) {
@@ -37,9 +38,9 @@ public class GameBoard {
     }
 
     /**
-     * 
+     *  checks if a position exists
      * @param position
-     * @return 
+     * @return returns the position if it does and returns null otherwise
      */
     public Position getPosition(Position position) {
         return adjacencyList.containsKey(position) ? position: null;
@@ -54,7 +55,11 @@ public class GameBoard {
     public boolean isPositionOccupied(Position position) {
         return position != null && position.isOccupied();
     }
+    
 
+    /**
+     * This method clears the board
+     */
     public void resetBoard() {
         for(Map.Entry<Position, List<Position>> position: adjacencyList.entrySet()) {
             position.getKey().release(); // clears a postition marking it as unoccupied
@@ -62,7 +67,7 @@ public class GameBoard {
     }
 
     /**
-     * 
+     * Gets the list of all unoccupired postions
      * @return A list of all positions that are not occupied
      */
     public List<Position> getUnoccupiedPositions() {
@@ -78,10 +83,20 @@ public class GameBoard {
         return unoccupiedPositions;
     }
 
-    // public void setUnoccupiedPositions( List<Position> positions) {
-    //     positions
-    // }
+
+    public void endGame() {
+        this.gameON = false;
+    }
+
+
+    public boolean gameOver() {
+        return gameON == false;
+    }
+
     
+    /**
+     * Displays the game state on the terminal
+     */
     public void viewBoard() {
         String fileName = "gameboard.txt";
         try {

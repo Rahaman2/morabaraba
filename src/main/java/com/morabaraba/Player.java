@@ -18,6 +18,7 @@ public class Player {
         this.board = board;
         this.cows =  initaializeCows();
         this.placedCows = new ArrayList<>();
+        // placedCows.sort( null );
     }
 
     public String getName() {
@@ -28,11 +29,13 @@ public class Player {
     }
 
     public List<Cow> getUnplacedCows() {
-        return cows.keySet().stream().filter( cow -> cow.getPosition() == null).toList();
+        return cows.keySet()
+                .stream()
+                .filter( cow -> cow.getPosition() == null).toList();
     }
 
     /**
-     * Moves a cow to a valid position and marks the postion as occupied if successful
+     * Moves a cow to a valid position if not occupied and marks the postion as occupied if successful
      * This method also updates the state variable of placed cows by incrementing it
      * @param cow
      * @param position
@@ -41,17 +44,17 @@ public class Player {
 
     public Cow moveCow(Cow cow, Position position) {
         
-        if(!cow.isPlaced()) { 
+        if(!cow.isPlaced() && !position.isOccupied()) { 
             cow.setPosition(position); // assign a cow a position
             placedCows.add(cow); // add cow to placed cows 
             position.occupy(); // mark the postion as occupired
             cows.put(cow, position); // update the cow hashmap to mark the cow as placed
             return cow;
         } else {
+            ////////////////////////////////// to fix
 
-            // if cow is placed check for neighbouring positions
             List<Position> neigbourList =  this.board.getNeighbors(position);
-            // Filterring the neighbours to get a list of all valid neighbours
+            // getting valid neighbours
             List<Position> validNeighbours = neigbourList.stream().filter( n -> !n.isOccupied() ).collect(Collectors.toList());
 
             if (validNeighbours.contains(position)) {

@@ -1,8 +1,8 @@
 package com.morabaraba;
 
 public class Position {
-    private final String position; // Position identifier
-    private boolean occupied; 
+    private final String position; 
+    public boolean occupied; 
 
 
     public Position(String position) {
