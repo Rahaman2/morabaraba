@@ -67,7 +67,7 @@ public class Position {
         if (this == obj) return true;
         if (!(obj instanceof Position)) return false;
         Position other = (Position) obj;
-        return this.position.equals(other.position) && this.occupied == other.occupied;
+        return this.position.equals(other.position);
     }
 
 

@@ -55,6 +55,14 @@ public class Cow {
     }
 
     /**
+     * Removes the cow from the board without occupying any position.
+     * Used when a cow is shot by the opponent.
+     */
+    public void clearPosition() {
+        this.position = null;
+    }
+
+    /**
      * Checks if the cow is currently placed on the board.
      * @return true if the cow is placed, false otherwise.
      */

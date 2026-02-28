@@ -18,7 +18,7 @@ public class Mill {
      * @return true if the position was successfully added, false otherwise.
      */
     public boolean addPosition(Position position) {
-        if (positions.size() < 3 && !position.isOccupied()) {
+        if (positions.size() < 3 && position.isOccupied()) {
             positions.add(position);
             position.occupy(); 
             return true;
