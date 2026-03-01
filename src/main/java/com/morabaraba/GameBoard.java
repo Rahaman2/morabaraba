@@ -211,7 +211,7 @@ public class GameBoard {
 
         adjacencyList.put(new Position("G1"), getNeighborPositions(Arrays.asList("D2", "F1", "G2", "H1")));
         adjacencyList.put(new Position("G2"), getNeighborPositions(Arrays.asList("F2", "G1", "G3", "H2")));
-        adjacencyList.put(new Position("G3"), getNeighborPositions(Arrays.asList("E2","F3","G2", "H2")));
+        adjacencyList.put(new Position("G3"), getNeighborPositions(Arrays.asList("E2","F3","G2", "H3")));
 
 
         adjacencyList.put(new Position("H1"), getNeighborPositions(Arrays.asList("D1", "G1", "H2")));
